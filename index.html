@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+
+    <title>아주대 수강신청</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/spmodal.css">
+    <link rel="stylesheet" href="./css/loading.css">
+
+    <link rel="stylesheet" href="./css/crownix-viewer.min.css">
+    <script language="javascript" src="./script/jquery.lastest.js"></script>
+    <script language="javascript" src="./script/netfunnel.js" charset="UTF-8"></script>
+    <script language="javascript" src="./script/common.js"></script>
+    <script language="javascript" src="./script/message.js"></script>
+    <script language="javascript" src="./script/crownix-viewer.min.js"></script>
+    <script type="text/javascript">
+        <!--
+        var pageInfo = getPageInfo();
+
+        var contextPath = '';
+        var pageType 	= '';
+        var isMobile 	= false;
+        var isLoginUser = true;
+
+        if(pageType == "major") $('title').html("아주대학교 전공진입제 수강신청");
+        else $('title').html(message.get('title'));
+        //-->
+    </script>
+
+</head>
+<body>
+<div class="header" style="text-align: center;">
+    <form id="frmHeader" onsubmit="return false;">
+        <input type="hidden" name="strCampFg" value="S">
+        <input type="hidden" name="strLtYy" value="2021">
+        <input type="hidden" name="strLtShtmCd" value="U0002004">
+        <input type="hidden" name="strNewYn" value="">
+        <input type="hidden" name="strTransYn" value="">
+        <div class="fixed-wid h-logo">
+
+
+            <a href="#" class="h-logo-link">
+                <img src="/images/white-logo.png" alt="아주대로고">
+            </a>
+            <div class="top-menu">
+                <ul id="menu">
+                    <li id="bord">공지사항</li>
+                    <li id="aply">수강신청</li>
+                    <li id="time">개인시간표</li>
+                    <li id="revs">조정강의정보</li>
+                </ul>
+            </div>
+
+
+
+            <input type="hidden" name="strStdNo" value="202126869">
+            <input type="hidden" name="strLoginUserNo" value="202126869">
+            <input type="hidden" name="strStdNm" value="김경수">
+            <input type="hidden" name="strLtShtmNm" value="동계계절">
+            <input type="hidden" name="strShyrCd" value="U0003001">
+
+            <div class="logout">
+                <div class="login-info"><span>김경수</span> / <span>202126869</span> 님</div>
+                <div class="nb-buttons nb-inlint">
+                    <div class="nb-btn-logout"><button type="button" id="btnLogout">로그아웃</button></div>
+                </div>
+            </div>
+
+
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    <!--
+    $(document).ready(function(){
+        $("#menu > li").on("click",function(){
+            if(!isLoginUser){ notLogin(); }else{ goPages($(this).attr("id")); }
+        });
+
+        $("#mobileMenu").on("click",function(){
+            if($(this).hasClass("on")){
+                $(this).removeClass("on");
+            }else{
+                $(this).addClass("on");
+            }
+        });
+
+        $("#btnLogout")
+            .text(message.get('logout'))
+            .on("click",function(){
+                logoutUser();
+            });
+
+        $(".h-logo-link").on("click",function(){
+            goLoginPage();
+        });
+
+        $("button").css("cursor","pointer");
+
+        $(".FC_ENTER").on("keypress",function(){
+            fnIsEnter();
+        });
+
+
+    });
+    //-->
+</script>
+<div class="BO_system nb-q fixed-wid" id="contents">
+
+
+    <form name="change" onsubmit="return false;">
+        <input type="hidden" name="strStdNo" value="202126869">
+        <input type="hidden" name="strLtYy" value="2021">
+        <input type="hidden" name="strLtShtmCd" value="U0002004">
+        <h1 class="page-title">조정강의정보</h1>
+        <section class="nb-tab">
+            <div class="nb-tabMenu">
+                <dl id="tab_title">
+                    <dd class="on">
+                        <label>
+                            <em>개인강의조정정보</em>
+                        </label>
+                    </dd>
+                    <dd>
+                        <label>
+                            <em>전체강의조정정보</em>
+                        </label>
+                    </dd>
+                </dl>
+            </div>
+            <ul class="nb-tabContents" id="tab_contents">
+                <li class="on">
+                    <div class="nb-title page">
+                        <h2><em>개인강의조정정보</em></h2>
+                        <div class="help-block inline ml10 blue">*김경수님이 수강신청한 내용에 대한 변경사항입니다.</div>
+                    </div>
+                    <div class="scroll-form">
+                        <table id="tbl_personalRevisionLecture" style="min-width: 1000px;">
+                            <caption>개인강의조정정보</caption>
+                            <colgroup>
+                                <col width="120px">
+                                <col width="95px">
+                                <col width="70px">
+                                <col width="90px">
+                                <col width="*">
+                                <col width="5%">
+                                <col width="5%">
+                                <col width="5%">
+                                <col width="18%">
+                                <col width="18%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>조정구분</th>
+                                <th>조정일자</th>
+                                <th>수강번호</th>
+                                <th>과목코드</th>
+                                <th>과목명</th>
+                                <th>학점</th>
+                                <th>시간</th>
+                                <th>반</th>
+                                <th>조정전내역</th>
+                                <th>조정후내역</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="nb-title page">
+                        <h2><em>폐강정보</em></h2>
+                    </div>
+                    <div class="scroll-form">
+                        <table id="tbl_personalClosedLectureList" style="min-width: 1000px;">
+                            <caption>폐강정보</caption>
+                            <colgroup>
+                                <col width="10%">
+                                <col width="*">
+                                <col width="10%">
+                                <col width="10%">
+                                <col width="*">
+                                <col width="5%">
+                                <col width="5%">
+                                <col width="5%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>폐강일자</th>
+                                <th>폐강사유</th>
+                                <th>수강번호</th>
+                                <th>과목코드</th>
+                                <th>과목명</th>
+                                <th>학점</th>
+                                <th>시간</th>
+                                <th>반</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
+                <li>
+                    <div class="nb-title page">
+                        <h2><em>전체강의조정정보</em></h2>
+                        <div class="nb-buttons nb-inline right">
+                            <div class="nb-btn-save">
+                                <button type="button" id="btn_search">조회</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroll-form">
+                        <table id="tbl_revisionLecture">
+                            <caption>전체강의조정정보</caption>
+                            <colgroup>
+                                <col width="120px">
+                                <col width="95px">
+                                <col width="70px">
+                                <col width="90px">
+                                <col width="*">
+                                <col width="5%">
+                                <col width="5%">
+                                <col width="5%">
+                                <col width="18%">
+                                <col width="18%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>조정구분</th>
+                                <th>조정일자</th>
+                                <th>수강번호</th>
+                                <th>과목코드</th>
+                                <th>과목명</th>
+                                <th>학점</th>
+                                <th>시간</th>
+                                <th>반</th>
+                                <th>조정전내역</th>
+                                <th>조정후내역</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="nb-title page">
+                        <h2><em>전체폐강정보</em></h2>
+                    </div>
+                    <div class="scroll-form">
+                        <table id="tbl_closedLectureList">
+                            <caption>전체폐강정보</caption>
+                            <colgroup>
+                                <col width="10%">
+                                <col width="*">
+                                <col width="10%">
+                                <col width="10%">
+                                <col width="*">
+                                <col width="5%">
+                                <col width="5%">
+                                <col width="5%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>폐강일자</th>
+                                <th>폐강사유</th>
+                                <th>수강번호</th>
+                                <th>과목코드</th>
+                                <th>과목명</th>
+                                <th>학점</th>
+                                <th>시간</th>
+                                <th>반</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </form>
+
+    <script language="javascript" src="/revs/revisionlecture.js"></script>
+
+</div>
+</body>
+</html>
