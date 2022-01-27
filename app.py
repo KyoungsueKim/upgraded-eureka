@@ -13,8 +13,7 @@ import os
 # maxCredits = 21
 
 class App(Flask):
-    def __init__(self, import_name=__name__, name='홍길동', stdNumber='202220879', stdDept='무화과', grade='2',
-                                   maxCredits=18):
+    def __init__(self, name, stdNumber, stdDept, grade, maxCredits, startDate, import_name=__name__):
         super(App, self).__init__(import_name)
 
         self.name = name
@@ -31,7 +30,7 @@ class App(Flask):
         def index():
             html = 'index_none.html'
             # 수강 신청 시작 시간이 지나면
-            if datetime.datetime.now() > datetime.datetime(2022, 1, 27, 17, 57, 30):
+            if datetime.datetime.now() > startDate:
                 html = 'index.html'
 
             return render_template(html, name=self.name, stdNumber=self.stdNumber, stdDept=self.stdDept, grade=self.grade,
